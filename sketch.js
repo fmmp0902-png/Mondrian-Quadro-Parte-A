@@ -1,37 +1,52 @@
+let texturaImg;
+
 function setup() {
-  createCanvas(917, 899);
+  createCanvas(917,899);
+  noLoop();
+
+  loadImage(
+    'textura.jpg',
+    img => {
+      texturaImg = img;
+      redraw();
+    },
+    () => console.error('Failed to load image')
+  );
 }
 
 function draw() {
-  background(225, 229, 223);
+  background(255, 229, 223);
 
   stroke(20);
   strokeWeight(10);
-
-  // Linhas Horizontais
+  
+  // Linhas horizontais
   line(0, 368, 917, 368);
- line(0, 586, 917, 586);
+  line(0, 586, 917, 586);
 
-  // Linhas Verticais
-  line(422, 0, 422, 899); // Linha Meio
+  // Linhas verticais
+  line(422, 0, 422, 899);
   line(93, 586, 93, 899);
   line(706, 586, 706, 899);
 
-//Vermelho
-  fill(231,6,4);
-  rect(0,0,422,368)
+  //Vermelho
+  fill(231, 6, 4);
+  rect(0, 0, 422, 368);
 
-//Amarelo
-fill(250,209,3);
-rect(0,586,93,313);
+  //Amarelo
+  fill(250, 209, 3);
+  rect(0, 586, 93, 313);
 
-//Azul
-fill(23, 23, 101);
-rect(422, 586, 284, 250);
-}
+  //Azul
+  fill(23, 23, 101);
+  rect(422, 586, 284, 250);
 
-
-
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+  //Textura
+  if (texturaImg) {
+    push();
+    blendMode(MULTIPLY);
+    tint(255, 125);
+    image(texturaImg, 0, 0, width, height);
+    pop();
+  }
 }
