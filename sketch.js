@@ -15,7 +15,8 @@ function setup() {
 }
 
 function draw() {
-  background(255, 229, 223);
+  // Fundo
+  background(225, 229, 223);
 
   stroke(20);
   strokeWeight(10);
@@ -49,4 +50,7 @@ function draw() {
     image(texturaImg, 0, 0, width, height);
     pop();
   }
+}
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
